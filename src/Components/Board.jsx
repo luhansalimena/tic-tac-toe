@@ -36,59 +36,59 @@ const Board = () => {
     }
   }
   useEffect(() => {
-    checkWin()
-  }, [board])
+    const checkWin = () => {
+      const horizontal = [
+        board.slice(0, 3),
+        board.slice(3, 6),
+        board.slice(6, 9)
+      ]
+      horizontal.forEach((row) => {
+        checkSum(row)
+      })
 
-  const checkWin = () => {
-    const horizontal = [
-      board.slice(0, 3),
-      board.slice(3, 6),
-      board.slice(6, 9)
-    ]
-    horizontal.forEach((row) => {
-      checkSum(row)
-    })
+      const vertical = [
+        [board[0], board[3], board[6]],
+        [board[1], board[4], board[7]],
+        [board[2], board[5], board[8]],
+      ]
+      vertical.forEach((col) => {
+        checkSum(col)
+      })
 
-    const vertical = [
-      [board[0], board[3], board[6]],
-      [board[1], board[4], board[7]],
-      [board[2], board[5], board[8]],
-    ]
-    vertical.forEach((col) => {
-      checkSum(col)
-    })
+      const diagonal = [
+        [board[0], board[4], board[8]],
+        [board[2], board[4], board[6]]
+      ]
 
-    const diagonal = [
-      [board[0], board[4], board[8]],
-      [board[2], board[4], board[6]]
-    ]
+      diagonal.forEach((col) => {
+        checkSum(col)
+      })
+      // console.log(horizontal);
+    }
 
-    diagonal.forEach((col) => {
-      checkSum(col)
-    })
-    // console.log(horizontal);
-  }
-
-  const checkSum = (list) => {
-    let isFilled = checkFilled(list)
-    if (isFilled) {
-      const sum = list.reduce((a, b) => a + b)
-      if (sum === 3) {
-        console.log('X Wins');
-        setWin(1)
-      }
-      if (sum === 0) {
-        console.log('O Wins');
-        setWin(0)
+    const checkSum = (list) => {
+      let isFilled = checkFilled(list)
+      if (isFilled) {
+        const sum = list.reduce((a, b) => a + b)
+        if (sum === 3) {
+          console.log('X Wins');
+          setWin(1)
+        }
+        if (sum === 0) {
+          console.log('O Wins');
+          setWin(0)
+        }
       }
     }
-  }
 
-  const checkFilled = (array) => {
-    return !array.some(function (el) {
-      return el === null;
-    });
-  }
+    const checkFilled = (array) => {
+      return !array.some(function (el) {
+        return el === null;
+      });
+    }
+
+    checkWin()
+  }, [board])
 
   const handleResetClick = () => {
     setBoard(Array(9).fill(null));

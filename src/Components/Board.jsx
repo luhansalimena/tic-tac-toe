@@ -98,6 +98,7 @@ const Board = () => {
 
   return (
     <div className="flex-col items-center justify-center w-full h-screen">
+      <h1 className="my-2 text-4xl font-bold tracking-wide text-center text-white uppercase">Tic Tac Toe</h1>
       <div className="flex items-center justify-center w-full h-full">
         <div className="flex flex-wrap w-1/2">
           <Tile handleTileClick={handleTileClick} index={0} selected={board[0]} classes="border-r-4 border-b-4 border-white" />

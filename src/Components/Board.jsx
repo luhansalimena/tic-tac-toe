@@ -99,7 +99,9 @@ const Board = () => {
   return (
     <div className="flex-col items-center justify-center w-full h-screen">
       <h1 className="my-2 text-4xl font-bold tracking-wide text-center text-white uppercase">Tic Tac Toe</h1>
-      <div className="flex items-center justify-center w-full h-full">
+      {win === 1 && <h2 className="my-4 text-3xl font-bold tracking-wide text-center text-white uppercase">X Won!</h2>}
+      {win === 0 && <h2 className="my-4 text-3xl font-bold tracking-wide text-center text-white uppercase">O Won!</h2>}
+      <div className="flex items-center justify-center w-full h-full -my-24">
         <div className="flex flex-wrap w-1/2">
           <Tile handleTileClick={handleTileClick} index={0} selected={board[0]} classes="border-r-4 border-b-4 border-white" />
           <Tile handleTileClick={handleTileClick} index={1} selected={board[1]} classes="border-r-4 border-b-4 border-white" />

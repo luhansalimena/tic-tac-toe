@@ -36,7 +36,7 @@ const Board = () => {
     }
   }
   useEffect(() => {
-    const checkWin = () => {
+    function checkWin() {
       const horizontal = [
         board.slice(0, 3),
         board.slice(3, 6),
@@ -66,7 +66,7 @@ const Board = () => {
       // console.log(horizontal);
     }
 
-    const checkSum = (list) => {
+    function checkSum(list) {
       let isFilled = checkFilled(list)
       if (isFilled) {
         const sum = list.reduce((a, b) => a + b)
@@ -81,7 +81,7 @@ const Board = () => {
       }
     }
 
-    const checkFilled = (array) => {
+    function checkFilled(array) {
       return !array.some(function (el) {
         return el === null;
       });
